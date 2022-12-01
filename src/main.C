@@ -14,7 +14,7 @@
 #include "AppFactory.h"
 
 // Create a performance log
-PerfLog Moose::perf_log("c_pfor_am");
+PerfLog Moose::perf_log("waam_am");
 
 // Begin the main program.
 int
@@ -27,7 +27,7 @@ main(int argc, char * argv[])
   c_pfor_amTestApp::registerApps();
 
   // Create an instance of the application and store it in a smart pointer for easy cleanup
-  std::shared_ptr<MooseApp> app = AppFactory::createAppShared("c_pfor_amTestApp", argc, argv);
+  std::shared_ptr<MooseApp> app = AppFactory::createAppShared("waam_amTestApp", argc, argv);
 
   // Execute the application
   app->run();
