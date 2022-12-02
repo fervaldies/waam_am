@@ -32,7 +32,7 @@ FunctionPathEllipsoidAux::validParams()
   
   params.addRequiredParam<PostprocessorName>("temperature_pp","Postprocessor with temperature value to determine heat source motion.");
       
-  params.addRequiredParam<Real>("single_scan_length","Total length during one scan. "
+  params.addRequiredParam<std::vector<Real>>("single_scan_length","Total length during one scan. "
                                                    "After this length the laser is switched off. ");
   params.addRequiredParam<Real>("threshold_temperature","When the temperature provided by the postprocessor decreases "
                                                         "below this threshold, the heat source is moved to the next "
@@ -64,7 +64,7 @@ FunctionPathEllipsoidAux::FunctionPathEllipsoidAux(const InputParameters & param
     _temperature_pp_old(getPostprocessorValueOld("temperature_pp")),
     
     // Total length during one scan
-    _single_scan_length(getParam<Real>("single_scan_length")),
+    _single_scan_length(getParam<std::vector<Real>>("single_scan_length")),
     
     // Threshold temperature for the postprocessor condition
     _threshold_temperature(getParam<Real>("threshold_temperature")),
@@ -103,7 +103,7 @@ FunctionPathEllipsoidAux::computeValue()
   Real z_t = _z_coord + _velocity(2) * (_t - _t_scan);
   
   Real val;	
-  if (abs(x_t-_x_coord) >= _single_scan_length) { // This single scan is over
+  if (abs(x_t-_x_coord) >= _single_scan_length[_n_track]) { // This single scan is over
 	  
     val = 0.0;
 	  
