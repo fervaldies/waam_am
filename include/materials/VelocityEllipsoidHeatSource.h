@@ -1,6 +1,6 @@
-// Nicolò Grilli
-// University of Bristol
-// 6 Novembre 2022
+// Fernando Valient Dies & Nicolò Grilli
+// University of Sydney & University of Bristol
+// 29-11-2022
 
 // Double ellipsoid volumetric source heat, the motion is determined
 // by input velocity, starting positions and a postprocessor.
@@ -74,7 +74,7 @@ protected:
   
   /// Total time during one scan
   /// After this time the laser is switched off
-  const Real _single_scan_length;
+  const std::vector<Real> _single_scan_length;
   
   /// When the temperature provided by the postprocessor decreases
   /// below this threshold, the heat source is moved to the next
