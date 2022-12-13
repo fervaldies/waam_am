@@ -72,8 +72,8 @@ void
 FunctionPathEllipsoidAux::initQpStatefulProperties()
 {
   // Initialize coordinates of the heat source
-  _n_track = 0;
   _t_scan = _t;
+  _n_track = 0;
 }
 
 Real
