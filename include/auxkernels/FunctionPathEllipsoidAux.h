@@ -23,10 +23,7 @@ public:
   FunctionPathEllipsoidAux(const InputParameters & parameters);
 
 protected:
-  void initQpStatefulProperties();
   virtual Real computeValue() override;
-  
-  virtual void checkPPcondition();
   
   // The default is 0 to 1, but in general the level set will be transformed from
   // _low_level_set_var to _high_level_set_var
