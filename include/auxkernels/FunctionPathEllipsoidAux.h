@@ -23,7 +23,7 @@ public:
   FunctionPathEllipsoidAux(const InputParameters & parameters);
 
 protected:
-  virtual void initQpStatefulProperties();
+  void initQpStatefulProperties();
   virtual Real computeValue() override;
   
   virtual void checkPPcondition();
