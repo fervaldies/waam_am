@@ -82,9 +82,9 @@ FunctionPathEllipsoidAux::computeValue()
   // value of the level set variable at the previous time step
   Real old_level_set = _u[_qp];
   
-  _x_coord = _init_x_coords[_n_track];
-  _y_coord = _init_y_coords[_n_track];
-  _z_coord = _init_z_coords[_n_track];
+  Real _x_coord = _init_x_coords[_n_track];
+  Real _y_coord = _init_y_coords[_n_track];
+  Real _z_coord = _init_z_coords[_n_track];
 
   const Real & x = _q_point[_qp](0);
   const Real & y = _q_point[_qp](1);
