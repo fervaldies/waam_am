@@ -1,4 +1,4 @@
-// Fernando Valient Dies & Nicolò Grilli
+// Fernando Valiente Dies & Nicolò Grilli
 // University of Sydney & University of Bristol
 // 29-11-2022
 
@@ -23,7 +23,6 @@ FunctionPathEllipsoidAux::validParams()
   params.addRequiredParam<Real>("ry", "effective longitudinal ellipsoid radius");
   params.addRequiredParam<Real>("rz", "effective depth ellipsoid radius");
   params.addRequiredParam<RealVectorValue>("velocity", "Velocity vector");
-  params.addRequiredParam<std::vector<Real>>("temp_array", "Array containing all the temperatures");
   
   // Every time the postprocessor condition is satisfied, the heat source is moved to the next set of coordinates
   params.addRequiredParam<std::vector<Real>>("init_x_coords", "Initial values of x coordinates of the heat source");
@@ -50,9 +49,6 @@ FunctionPathEllipsoidAux::FunctionPathEllipsoidAux(const InputParameters & param
     _ry(getParam<Real>("ry")),
     _rz(getParam<Real>("rz")),
     _velocity(getParam<RealVectorValue>("velocity")), // Scanning speed vector
-
-    // Array containing all the temperatures
-    _temp_array(getParam<std::vector<Real>>("temp_array")),
     
     // Initial values of the coordinates of the heat source
     _init_x_coords(getParam<std::vector<Real>>("init_x_coords")),
@@ -89,7 +85,6 @@ FunctionPathEllipsoidAux::computeValue()
   _x_coord = _init_x_coords[_n_track];
   _y_coord = _init_y_coords[_n_track];
   _z_coord = _init_z_coords[_n_track];
-  _temp_array[(int)_t] = _temperature_pp;
 
   const Real & x = _q_point[_qp](0);
   const Real & y = _q_point[_qp](1);
@@ -112,7 +107,6 @@ FunctionPathEllipsoidAux::computeValue()
   } else {
   
   // ellipsoid function value
-  
   
   val = 6.0 * std::sqrt(3.0) /
           (_rx * _ry * _rz * std::pow(libMesh::pi, 1.5)) *
@@ -145,7 +139,7 @@ FunctionPathEllipsoidAux::computeValue()
 void
 FunctionPathEllipsoidAux::checkPPcondition()
 {
-  if (_temperature_pp < _temp_array[(int)_t-1]) { // cooling condition
+  if (_t > 0) { // cooling condition
     if (_temperature_pp < _threshold_temperature) { // reached threshold temperature
 		
       // update initial heat source coordinate and track time	
