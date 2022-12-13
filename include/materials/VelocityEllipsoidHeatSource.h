@@ -1,4 +1,4 @@
-// Fernando Valient Dies & Nicolò Grilli
+// Fernando Valiente Dies & Nicolò Grilli
 // University of Sydney & University of Bristol
 // 29-11-2022
 
@@ -44,9 +44,6 @@ protected:
   
   /// Scanning speed vector
   RealVectorValue _velocity;
-  
-  /// Array Temperatures
-  std::vector<Real> _temp_array;
   
   /// Initial values of the coordinates of the heat source
   /// Every time the postprocessor condition is satisfied, 
