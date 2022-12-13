@@ -131,9 +131,6 @@ VelocityEllipsoidHeatSource::checkPPcondition()
       //printf("n track: %d", _n_track);
       _n_track += 1;
       _velocity(0) = -_velocity(0);
-      _x_coord = _init_x_coords[_n_track];
-      _y_coord = _init_y_coords[_n_track];
-      _z_coord = _init_z_coords[_n_track];
       _t_scan = _t;
   		
 	}
