@@ -6,6 +6,8 @@
 
 #include "Function.h"
 
+#include "VelocityEllipsoidHeatSource.h"
+
 registerMooseObject("MooseApp", FunctionPathEllipsoidAux);
 
 InputParameters
@@ -67,13 +69,13 @@ FunctionPathEllipsoidAux::FunctionPathEllipsoidAux(const InputParameters & param
 {
 }
 
-void
-FunctionPathEllipsoidAux::initQpStatefulProperties()
-{
-  // Initialize coordinates of the heat source
-  _t_scan = _t;
-  _n_track = 0;
-}
+//void
+//FunctionPathEllipsoidAux::initQpStatefulProperties()
+//{
+//  // Initialize coordinates of the heat source
+//  _t_scan = _t;
+//  _n_track = 0;
+//}
 
 Real
 FunctionPathEllipsoidAux::computeValue()
@@ -135,18 +137,18 @@ FunctionPathEllipsoidAux::computeValue()
 
 // Check if the postprocessor temperature condition is satisfied
 // and change the initial coordinates and scan time
-void
-FunctionPathEllipsoidAux::checkPPcondition()
-{
-  if (_t > 0) { // cooling condition
-    if (_temperature_pp < _threshold_temperature) { // reached threshold temperature
+//void
+//FunctionPathEllipsoidAux::checkPPcondition()
+//{
+//  if (_t > 0) { // cooling condition
+//    if (_temperature_pp < _threshold_temperature) { // reached threshold temperature
 		
-      // update initial heat source coordinate and track time	
-      //printf("n track FunctionPathE: %d", _n_track);
-      _n_track += 1;
-      _velocity(0) = -_velocity(0);
-      _t_scan = _t;
+//      // update initial heat source coordinate and track time	
+//      //printf("n track FunctionPathE: %d", _n_track);
+//      _n_track += 1;
+//      _velocity(0) = -_velocity(0);
+//      _t_scan = _t;
   		
-	}
-  }
-}
+//	}
+//  }
+//}
