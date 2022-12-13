@@ -9,6 +9,8 @@
 
 #include "Material.h"
 
+class Function;
+
 /**
  * Double ellipsoid heat source distribution.
  */
