@@ -4,8 +4,6 @@
 
 #include "VelocityEllipsoidHeatSource.h"
 
-#include "Function.h" // is this necessary?
-
 registerMooseObject("HeatConductionApp", VelocityEllipsoidHeatSource);
 
 InputParameters
@@ -55,7 +53,6 @@ VelocityEllipsoidHeatSource::VelocityEllipsoidHeatSource(const InputParameters &
     
     // Postprocess with temperature value
     _temperature_pp(getPostprocessorValue("temperature_pp")),
-    _temperature_pp_old(getPostprocessorValueOld("temperature_pp")),
     
     // Total length during one scan
     _single_scan_length(getParam<std::vector<Real>>("single_scan_length")),
