@@ -5,6 +5,7 @@
 #pragma once
 
 #include "AuxKernel.h"
+#include "VelocityEllipsoidHeatSource.h"
 
 class Function;
 
