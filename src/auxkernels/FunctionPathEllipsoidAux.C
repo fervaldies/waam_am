@@ -7,6 +7,7 @@
 #include "Function.h"
 
 #include "VelocityEllipsoidHeatSource.h"
+#include "VelocityEllipsoidHeatSource.C"
 
 registerMooseObject("MooseApp", FunctionPathEllipsoidAux);
 
