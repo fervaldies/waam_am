@@ -81,8 +81,6 @@ FunctionPathEllipsoidAux::initQpStatefulProperties()
 Real
 FunctionPathEllipsoidAux::computeValue()
 {
-  // value of the level set variable at the previous time step
-  Real old_level_set = _u[_qp];
   
   _x_coord = _init_x_coords[_n_track];
   _y_coord = _init_y_coords[_n_track];
@@ -116,7 +114,10 @@ FunctionPathEllipsoidAux::computeValue()
                           3.0 * std::pow(y - y_t, 2.0) / std::pow(_ry, 2.0) +
                            3.0 * std::pow(z - z_t, 2.0) / std::pow(_rz, 2.0)));
   }
-  
+	
+    // value of the level set variable at the previous time step
+  Real old_level_set = _u[_qp];
+	
   if (val > _level_set_activation_threshold) { // heat source activating this _qp
 	  
 	  return _high_level_set_var;
