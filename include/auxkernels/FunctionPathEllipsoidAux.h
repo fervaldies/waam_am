@@ -24,7 +24,7 @@ public:
   FunctionPathEllipsoidAux(const InputParameters & parameters);
 
 protected:
-  virtual void initValue() override;
+  virtual void initValue();
   virtual Real computeValue() override;
   
   virtual void checkPPcondition();
